@@ -10,11 +10,33 @@ using std::vector;
 namespace se
 {
 
+class Configuration;
+
 class SplitTool
 {
 public:
-    virtual vector<string> cut() = 0;
+    SplitTool();
+    virtual ~SplitTool();
+    virtual vector<string> cut(const string &sentence) = 0;
 };
+
+
+class SplitToolCppJieba
+: public SplitTool
+{
+public:
+    SplitToolCppJieba();
+    virtual ~SplitToolCppJieba();
+    virtual vector<string> cut(const string &sentence) = 0;
+
+private:
+    Configuration & _conf;
+};
+
+
+
+
+
 
 }//end of namespace se
 
